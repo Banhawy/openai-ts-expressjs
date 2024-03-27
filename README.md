@@ -1,63 +1,71 @@
-# TypeScript x Express x Node.js
+# TypScript X Express x Openai
 
-This repository contains a basic TypeScript Express application that utilizes Node.js for server-side functionality. It is configured with Nodemon for automatic server restarts during development and uses ts-node for TypeScript execution.
+This is a basic TypeScript Express application that utilizes Node.js for server-side functionality and integrates with Openai. It is configured with Nodemon for automatic server restarts during development and uses ts-node for TypeScript execution.
 
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your machine:
 
-- [Node.js](https://nodejs.org/): Ensure that Node.js, preferably version 16 or higher, is installed on your system, as this project utilizes the latest versions of TypeScript and Nodemon.
-- [npm](https://www.npmjs.com/): npm is the package manager for Node.js and comes with the Node.js installation.
+- [Node.js](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
+- [Openai API Key](https://platform.openai.com/docs/guides/authentication)
 
 ## Installation
 
-Clone the repository to your local machine:
+1. Clone the repository to your local machine:
 
-```
+```sh
 git clone https://github.com/c99rahul/ts-node-express.git
 ```
 
-Navigate to the project directory:
+2. Navigate to the project directory:
 
-```
-cd ts-node-express/
+```sh
+cd openai-ts-expressjs
 ```
 
-Install the project dependencies including TypeScript and Nodemon:
+3. Install the project dependencies:
 
+```sh
+pnpm install
 ```
-npm i
+
+4. Create a `.env` file in the root of the project and add your Openai API key:
+
+```sh
+OPENAI_API_KEY=your-api-key-here
 ```
 
 ## Usage
 
-For development purposes, you can run the application using Nodemon to automatically restart the server when changes are detected. Execute the following command:
+To start the server in development, run the following command:
 
-```
-npm run dev
-```
-
-This will start the server at `http://localhost:3000` by default. You can change the port in the `src/index.ts` file or create an `.env` file to manage the environt-specific variables separately.
-
-For production, you can build the TypeScript files and then start the server. Run the following commands:
-
-```
-npm run build
-npm start
+```sh
+pnpm dev
 ```
 
-## Project Structure
+The server will be available at `http://localhost:4000`.
 
-The project structure is organized as follows:
+Project structure:
 
-- `src`: Contains TypeScript source files
-    - `index.ts`: Configures and starts the Express application
-- `dist`: Output directory created during build for compiled TypeScript files
-- `package.json`: Project configuration and dependencies
-- `tsconfig.json`: TypeScript configuration
-
-You can customize the project configuration i nthe `tsconfig.json` file and adjust the server settings in the `src/index.ts` file.
+```sh
+.
+├── src
+│   ├── controllers
+│   │   └── chat.ts
+│   ├── routes
+│   │   └── index.ts
+│   └── index.ts 
+├── .env
+├── .gitignore
+├── config.json
+├── package.json
+├── pnpm-lock.yaml
+├── README.md
+└── tsconfig.json
+```
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](/LICENSE) file for details.
+This project is open source and available under the [MIT License](LICENSE).
+
