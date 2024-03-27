@@ -1,13 +1,6 @@
-// src/index.ts
 import express, { Express, Request, Response } from "express";
-import dotenv from "dotenv";
-
-/*
- * Load up and parse configuration details from
- * the `.env` file to the `process.env`
- * object of Node.js
- */
-dotenv.config();
+import router from "./routes";
+import cors from "cors";
 
 /*
  * Create an Express application and get the
@@ -15,13 +8,18 @@ dotenv.config();
  * from the `process.env`
  */
 const app: Express = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 4000;
+
+app.use(express.json());
+app.use(cors());
 
 /* Define a route for the root path ("/")
  using the HTTP GET method */
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
+
+app.use("/api", router);
 
 /* Start the Express app and listen
  for incoming requests on the specified port */
